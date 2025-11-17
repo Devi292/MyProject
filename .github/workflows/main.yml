@@ -1,0 +1,30 @@
+name: Auto Commit Example
+
+# Trigger workflow on push to main branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the repository
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Git
+    - name: Set up Git
+      run: |
+        git config --global user.name "Your Name"
+        git config --global user.email "your.email@example.com"
+
+    # Step 3: Make changes or run script
+    - name: Make changes (example)
+      run: |
+        echo "Auto commit test" >> testfile.txt
+        git add .
+        git commit -m "Auto commit from GitHub Actions" || echo "No changes to commit"
+        git push origin main

@@ -1,23 +1,17 @@
--- Customer + Account
-SELECT
-    bc.customer_id,
-    bc.first_name,
-    bc.last_name,
-    a.account_type,
-    a.balance
-FROM banking_customers bc
-JOIN accounts a ON bc.customer_id = a.customer_id;
+-- Inner Join: Students with their Courses
+SELECT s.Name, c.CourseName, e.Grade
+FROM Students s
+INNER JOIN Enrollment e ON s.StudentID = e.StudentID
+INNER JOIN Courses c ON e.CourseID = c.CourseID;
 
--- Customer + Account + Transaction
-SELECT
-    bc.customer_id,
-    bc.first_name,
-    bc.email,
-    a.account_type,
-    t.transaction_type,
-    t.amount,
-    t.transaction_date
-FROM transactions t
-JOIN accounts a ON t.account_id = a.account_id
-JOIN banking_customers bc ON a.customer_id = bc.customer_id;
+-- Left Join: All Students and their Enrollments
+SELECT s.Name, c.CourseName, e.Grade
+FROM Students s
+LEFT JOIN Enrollment e ON s.StudentID = e.StudentID
+LEFT JOIN Courses c ON e.CourseID = c.CourseID;
 
+-- Right Join: All Courses and Enrolled Students
+SELECT s.Name, c.CourseName, e.Grade
+FROM Students s
+RIGHT JOIN Enrollment e ON s.StudentID = e.StudentID
+RIGHT JOIN Courses c ON e.CourseID = c.CourseID;

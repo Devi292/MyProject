@@ -1,14 +1,29 @@
--- High balance customers
-SELECT bc.first_name, a.balance
-FROM banking_customers bc
-JOIN accounts a ON bc.customer_id = a.customer_id
-WHERE a.balance > 30000;
+-- Count of students per course
+SELECT c.CourseName, COUNT(e.StudentID) AS TotalStudents
+FROM Courses c
+LEFT JOIN Enrollment e ON c.CourseID = e.CourseID
+GROUP BY c.CourseName;
 
--- Total deposits per customer
-SELECT
-    bc.first_name,
-    SUM(CASE WHEN t.transaction_type = 'Deposit' THEN t.amount ELSE 0 END) AS total_deposit
-FROM transactions t
-JOIN accounts a ON t.account_id = a.account_id
-JOIN banking_customers bc ON a.customer_id = bc.customer_id
-GROUP BY bc.first_name;
+-- Average grade per course (assuming grades as letters converted to points)
+-- For simplicity, A=4, B=3, C=2, D=1
+SELECT c.CourseName,
+       AVG(CASE e.Grade
+               WHEN 'A' THEN 4
+               WHEN 'B' THEN 3
+               WHEN 'C' THEN 2
+               WHEN 'D' THEN 1
+               ELSE 0
+           END) AS AvgGrade
+FROM Courses c
+LEFT JOIN Enrollment e ON c.CourseID = e.CourseID
+GROUP BY c.CourseName;
+
+-- Create a view of Student Enrollments
+CREATE VIEW StudentCourseView AS
+SELECT s.Name AS StudentName, s.Department, c.CourseName, e.Grade
+FROM Students s
+INNER JOIN Enrollment e ON s.StudentID = e.StudentID
+INNER JOIN Courses c ON e.CourseID = c.CourseID;
+
+-- Query the view
+SELECT * FROM StudentCourseView;

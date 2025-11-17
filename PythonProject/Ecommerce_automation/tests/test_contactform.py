@@ -5,7 +5,7 @@ def test_contact_form(driver, base_url):
     contact.open(base_url)  # open /contact directly
 
     # File path from Downloads folder (must contain some text)
-    file_path = r"C:\Users\devi.n\Downloads\Textfile.txt"
+    file_path = r"C:\Users\devi.n\Downloads\project.txt"
 
     # Fill and submit the form
     contact.fill_form(

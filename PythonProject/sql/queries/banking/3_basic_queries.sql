@@ -1,17 +1,18 @@
--- show all
-SELECT * FROM banking_customers;
+-- Select all students
+SELECT * FROM Students;
 
--- show one
-SELECT * FROM banking_customers WHERE email = 'devi@gmail.com';
+-- Select specific columns
+SELECT Name, Department FROM Students;
 
--- update example
-UPDATE banking_customers SET city = 'Madurai' WHERE customer_id = 1;
+-- Filter students by department
+SELECT * FROM Students
+WHERE Department = 'CS';
 
--- verify update
-SELECT customer_id, first_name, city FROM banking_customers WHERE customer_id = 1;
+-- Order students by Age descending
+SELECT * FROM Students
+ORDER BY Age DESC;
 
--- delete example (you can comment this out if you don't want to delete)
-DELETE FROM banking_customers WHERE customer_id = 4;
-
--- verify delete
-SELECT * FROM banking_customers;
+-- Count students in each department
+SELECT Department, COUNT(*) AS TotalStudents
+FROM Students
+GROUP BY Department;

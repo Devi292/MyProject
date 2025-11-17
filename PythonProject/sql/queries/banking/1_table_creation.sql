@@ -1,33 +1,25 @@
-PRAGMA foreign_keys = ON;
-
-DROP TABLE IF EXISTS transactions;
-DROP TABLE IF EXISTS accounts;
-DROP TABLE IF EXISTS banking_customers;
-
-CREATE TABLE banking_customers (
-    customer_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    first_name TEXT,
-    last_name TEXT,
-    email TEXT UNIQUE NOT NULL,
-    phone TEXT,
-    city TEXT,
-    status TEXT DEFAULT 'Active'
+-- Table for Students
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT,
+    Department VARCHAR(50),
+    Email VARCHAR(50)
 );
 
-CREATE TABLE accounts (
-    account_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    customer_id INTEGER,
-    account_type TEXT,
-    balance REAL,
-    created_at TEXT,
-    FOREIGN KEY(customer_id) REFERENCES banking_customers(customer_id)
+-- Table for Courses
+CREATE TABLE Courses (
+    CourseID INT PRIMARY KEY,
+    CourseName VARCHAR(50),
+    Credits INT
 );
 
-CREATE TABLE transactions (
-    transaction_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    account_id INTEGER,
-    transaction_type TEXT,
-    amount REAL,
-    transaction_date TEXT,
-    FOREIGN KEY(account_id) REFERENCES accounts(account_id)
+-- Table for Enrollment
+CREATE TABLE Enrollment (
+    EnrollmentID INT PRIMARY KEY,
+    StudentID INT,
+    CourseID INT,
+    Grade CHAR(2),
+    FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
+    FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)
 );

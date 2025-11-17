@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourcePerFileMappings">
+    <file url="file://$PROJECT_DIR$/PythonProject/sql/queries/banking/1_table_creation.sql" value="5b446435-c422-4bbb-9aea-bbb63ae1e945" />
+    <file url="file://$PROJECT_DIR$/PythonProject/sql/queries/banking/2_insert_data.sql" value="5b446435-c422-4bbb-9aea-bbb63ae1e945" />
+    <file url="file://$PROJECT_DIR$/PythonProject/sql/queries/banking/3_basic_queries.sql" value="5b446435-c422-4bbb-9aea-bbb63ae1e945" />
+    <file url="file://$PROJECT_DIR$/PythonProject/sql/queries/banking/4_join_queries.sql" value="5b446435-c422-4bbb-9aea-bbb63ae1e945" />
+    <file url="file://$PROJECT_DIR$/PythonProject/sql/queries/banking/5_analysis_queries.sql" value="5b446435-c422-4bbb-9aea-bbb63ae1e945" />
+    <file url="file://$PROJECT_DIR$/PythonProject/sql/queries/banking/6_views.sql" value="5b446435-c422-4bbb-9aea-bbb63ae1e945" />
+  </component>
+</project>
